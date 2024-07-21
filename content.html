@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background-image: url('green.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 400px;
+            width: calc(100% - 40px); /* Ensure full width on mobile */
+            text-align: center;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #contact-form-submit {
+            background-color: #6200ea; /* Purple color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+
+        #contact-form-submit:hover {
+            background-color: #3700b3; /* Darker purple */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .contact-form {
+                width: calc(100% - 40px);
+                padding: 10px;
+            }
+
+            #contact-form-submit {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <input type="email" id="contact-form-email" placeholder="Your Email" required>
+        <input type="text" id="contact-form-subject" placeholder="Subject" required>
+        <button id="contact-form-submit">Post 🐟</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const contactFormSubmit = document.getElementById('contact-form-submit');
+            const contactFormEmail = document.getElementById('contact-form-email');
+            const contactFormSubject = document.getElementById('contact-form-subject');
+
+            contactFormSubmit.addEventListener('click', function () {
+                const email = contactFormEmail.value;
+                const subject = contactFormSubject.value;
+
+                if (email && subject) {
+                    const mailtoLink = `mailto:rishi09kumarr@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(email)}`;
+                    window.location.href = mailtoLink;
+                    contactFormEmail.value = '';
+                    contactFormSubject.value = '';
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
